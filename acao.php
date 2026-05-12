@@ -17,15 +17,15 @@ if(isset($_POST["cancelar"])){
 
    $nome = $_POST["nome"];
    $cpf = $_POST["cpf"];
-   $nome = $_POST["categoria"];
+   $categoria = $_POST["categoria"];
    $produtoNome = $_POST["produto"];
    $quantidade = $_POST["quantidade"];
 
    //Instanciar os objetos das classes
-   $newCategoria = new Categoria ($nome);
+   $newCategoria = new Categoria ($categoria);
    $newCliente = new Cliente ($nome, $cpf);
    $newProduto = new Produto ($produtoNome, 15.00, $newCategoria);
-   $newPedido = new Pedido (1, date("d/m/y"), 15.00, $quantidade);
+   $newPedido = new Pedido (1, date("d/m/y"), 15.00, $quantidade, $newProduto);
 ?>
 <html>
    <head>
@@ -48,6 +48,10 @@ if(isset($_POST["cancelar"])){
       <form method="post">
          <input type="submit" name="cancelar" value="Cancelar Pedido">
       </form>
+
+      <?php
+         $newPedido->mostrarPedido();
+      ?>
      
    </body>
 </html>
