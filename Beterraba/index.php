@@ -12,17 +12,17 @@
    <tr>
       <td>Cappuccino</td>
       <td>Cafés</td>
-      <td>R$ 12,00</td>
+      <td>R$ 15,00</td>
    </tr>
    <tr>
       <td>Latte</td>
       <td>Cafés</td>
-      <td>R$ 10,00</td>
+      <td>R$ 15,00</td>
    </tr>
    <tr>
       <td>Brownie</td>
       <td>Doces</td>
-      <td>R$ 8,00</td>
+      <td>R$ 15,00</td>
    </tr>
 </table><br><hr>
 
@@ -47,6 +47,14 @@
 
       <h2>Escolha seus Itens</h2>
       <div>
+         <label>Categoria:</label> <br>
+         <select name="categoria">
+         <option value="Cafés">Cafés</option>
+         <option value="Doces">Doces</option>
+         <option value="Bebidas">Bebidas</option>
+         <option value="Salgados">Salgados</option>
+         </select>
+         </div>
          <label for="produto">Produto: </label> <br>
          <input type="text" name="produto">
       </div>
@@ -55,7 +63,7 @@
          <input type="number" name="quantidade">
       </div>
       <div>
-         <input type="reset" value="Limpar"> 
+         <input type="reset" value="Limpar">  
          <input type="submit" value="Enviar">
       </div>
    </form>

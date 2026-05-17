@@ -5,13 +5,17 @@
         private $data;
         private $valor;
         private $quantidade;
+        private $produto;
+        private $cliente;
 
         // Método construtor 
-        public function __construct($id, $data, $valor, $quantidade){
+        public function __construct($id, $data, $valor, $quantidade, $produto, $cliente){
         $this->id = $id;
         $this->data = $data;
         $this->valor = $valor;
         $this->quantidade = $quantidade;
+        $this->produto = $produto;
+        $this->cliente = $cliente;
     }
 
 
@@ -48,15 +52,32 @@
             $this->quantidade = $quantidade;
         }
 
+         public function getProduto() {
+            return $this->produto;
+        }
+
+        public function setProduto($produto) {
+            $this->produto = $produto;
+        }
+
         public function getValorTotal (){
             $total = $this->valor * $this->quantidade;
             return $total;
         }
 
+         public function getCliente() {
+            return $this->cliente;
+        }
+
+        public function setCliente($cliente) {
+            $this->cliente = $cliente;
+        }
+
         public function mostrarPedido(){
             echo "<h2>Pedido #" . $this->id . "</h2>";
-            echo "Cliente: " . $this->id->getNome();
+            echo "Cliente: " . $this->cliente->getNome();
             echo "<h3>Produtos:</h3>";
+            echo $this->produto->getNomeProduto();
             echo "<h3>Total: R$ " . $this->getValorTotal() . "</h3>";
         }
 

@@ -36,5 +36,6 @@
         public function setCategoria($categoria) {
             $this->categoria = $categoria;
         }
+
     }
 ?>    
