@@ -25,7 +25,7 @@ if(isset($_POST["cancelar"])){
    $newCategoria = new Categoria ($categoria);
    $newCliente = new Cliente ($nome, $cpf);
    $newProduto = new Produto ($produtoNome, 15.00, $newCategoria);
-   $newPedido = new Pedido (1, date("d/m/y"), 15.00, $quantidade, $newProduto);
+   $newPedido = new Pedido (1, date("d/m/y"), 15.00, $quantidade, $newProduto, $newCliente);
 ?>
 <html>
    <head>
