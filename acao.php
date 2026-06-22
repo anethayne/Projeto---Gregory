@@ -1,0 +1,66 @@
+<?php
+
+if(isset($_POST["cancelar"])){
+
+    echo "<h2 style='color:red'>
+            Pedido cancelado com sucesso!
+          </h2>";
+
+    exit();
+}
+   //Incluir os arquivos das classes 
+   require "Categoria.php";
+   require "Produto.php";
+   require "Cliente.php";
+   require "Pedido.php";
+
+
+   $nome = $_POST["nome"];
+   $cpf = $_POST["cpf"];
+   $categoria = $_POST["categoria"];
+   $produtoNome = $_POST["produto"];
+   $quantidade = $_POST["quantidade"];
+   $pagamento = $_POST["pagamento"];
+
+   if($pagamentoTipo == "pix"){
+      $pagamento = new Pix();
+   }eslseif ($pagaemntoTipo == "cartao"){
+      $pagamento = new Cartao();
+   }else{
+      $pagaemnto = new Dinheiro();
+   }
+
+   //Instanciar os objetos das classes
+   $newCategoria = new Categoria ($categoria);
+   $newCliente = new Cliente ($nome, $cpf);
+   $newProduto = new Produto ($produtoNome, 15.00, $newCategoria);
+   $newPedido = new Pedido (1, date("d/m/y"), $quantidade, $newProduto, $newCliente, $pagamento);
+?>
+<html>
+   <head>
+      <title>Pedido</title>
+   </head>
+   <body>
+      <h1>Pedido Realizado com Sucesso!</h1>
+      <p><strong>Cliente:</strong>
+      <?php echo $newCliente->getNome(); ?> </p>
+      <p><strong>CPF:</strong>
+      <?php echo $cpf; ?> </p>
+      <p><strong>Categoria:</strong>
+      <?php echo $newCategoria->getNome(); ?> </p>
+      <p><strong>Produto:</strong>
+      <?php echo $produtoNome; ?> </p>
+      <p><strong>Quantidade:</strong>
+      <?php echo $quantidade; ?> </p>
+      <p><strong>Total:</strong>
+      <?php echo $newPedido->getValor(); ?> </p>
+      <form method="post">
+         <input type="submit" name="cancelar" value="Cancelar Pedido">
+      </form>
+
+      <?php
+         $newPedido->mostrarPedido();
+      ?>
+     
+   </body>
+</html>
