@@ -1,5 +1,5 @@
 <?php
-   require "Produto.php";
+   require_once "Produto.php";
     class Doces extends Produto{
         private $peso;
 
@@ -10,7 +10,7 @@
         
         public function imprimir(){
             parent::imprimir();
-                echo "Peso: " . $this->peso;
+                echo "Peso: " . $this->peso . "<br>";
             }
     }
 ?>

@@ -1,7 +1,8 @@
 <?php
-require "Produto.php";
+require_once "Produto.php";
     class Bebidas extends Produto{
         private $tamanhoCopo;
+
         public function __construct ($nome, $preco, Categoria $categoria, $tamanho){
             parent::__construct ($nome, $preco, $categoria);
             $this->tamanhoCopo= $tamanho;
@@ -9,7 +10,7 @@ require "Produto.php";
 
         public function imprimir(){
             parent::imprimir();
-            echo "Tamanho: " . $this->tamanhoCopo;
+            echo "Tamanho: " . $this->tamanhoCopo . "<br>";
         }
     } 
 ?>

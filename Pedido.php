@@ -1,7 +1,7 @@
 <?php
-    require "Produto.php";
-    require "Cliente.php";
-    require "Pagamento.php";
+    require_once  "Produto.php";
+    require_once "Cliente.php";
+    require_once "Pagamento.php";
 
     class Pedido {
         // Atributo 
@@ -68,6 +68,10 @@
             $this->cliente = $cliente;
         }
 
+        public function getValorTotal(){
+           return $this->produto->getPreco() * $this->quantidade;
+        }
+
         public function finalizarPedido(){
             echo "<h2>Pedido Finalizado!!</h3>";
             $this->cliente->imprimir();
@@ -79,10 +83,12 @@
 
         public function mostrarPedido(){
             echo "<h2>Pedido #" . $this->id . "</h2>";
-            echo "Cliente: " . $this->cliente->getNome();
-            echo "<h3>Produtos:</h3>";
-            echo $this->produto->getNomeProduto();
+            echo "<h3>Cliente:</h3>" . $this->cliente->getNome();
+            echo "<h3>Conteúdo:</h3>";
+            echo $this->produto->imprimir();
             echo "<h3>Total: R$ " . $this->getValorTotal() . "</h3>";
+            echo "<h3>Pagamento:</h3>";
+            $this->pagamento->realizarPagamento();
         }
 
         public function cancelarPedido () {

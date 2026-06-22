@@ -38,8 +38,8 @@
         }
 
         public function imprimir(){
-            echo "Produto: " . $this->nomeProduto;
-            echo "Preço: R$ " . $this->preco;
+            echo "Produto: " . $this->nomeProduto . "<br>"; 
+            echo "Preço: R$ " . $this->preco . "<br>";
             $this->categoria->imprimir();
         }
 

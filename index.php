@@ -1,6 +1,7 @@
 <?php
-   require "Pedido.php";
+   require_once "Pedido.php";
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -24,22 +25,20 @@
          <label for="produto">Produto: </label> <br>
          <input type="text" name="produto">
       </div>
-      <label for="categoria"> Categoria: </label> <br>
-      <input type="radio" name="categoria">
-        <label for="bebidas">Bebidas</label>
-      <input type="radio" name="categoria" value="doces">
-        <label for="doces">Doces</label>
+      <label> Categoria: </label> <br>
+      <label><input type="radio" name="categoria" value="Bebidas">Bebidas</label>
+      <label><input type="radio" name="categoria" value="Doces">Doces</label>
       <div>
          <label for="quantidade">Quantidade: </label> <br>
          <input type="number" name="quantidade">
       </div>
-      <label>Forma de pagamento:</label><br>
+      <label>Forma de pagamento:</label> <br>
       <select name="pagamento">
          <option value="pix">Pix</option>
          <option value="cartao">Cartão</option>
-         <option value="dinheiro">Dinheiro</option>
+         <option value="dinheiro">Dinheiro</option> 
       </select>
-      <div>
+      <div><br>
          <input type="reset" value="Limpar">  
          <input type="submit" value="Enviar">
       </div>

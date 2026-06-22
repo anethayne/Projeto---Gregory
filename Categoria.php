@@ -18,6 +18,6 @@
     }
 
     public function imprimir(){
-        echo "Categoria: " . $this->nome;
+        echo "Categoria: " . $this->nome . "<br>";
     }
 }
