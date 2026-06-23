@@ -2,7 +2,6 @@
     class Categoria {
         // Atributo 
         private $nome;
-        private $listaProdutos = array('Cafés', 'Bebidas', 'Salgados', 'Doces');
         
         // Método construtor 
         public function __construct ($nome) {
@@ -18,11 +17,7 @@
         $this->nome = $nome;
     }
 
-    public function getListaProdutos() {
-        return $this->listaProdutos;
-    }
-
-    public function setListaProdutos($listaProdutos) {
-        $this->listaProdutos = $listaProdutos;
+    public function imprimir(){
+        echo "Categoria: " . $this->nome . "<br>";
     }
 }

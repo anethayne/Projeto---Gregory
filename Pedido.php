@@ -1,19 +1,25 @@
 <?php
+    require_once "Produto.php";
+    require_once "Cliente.php";
+    require_once "Pagamento.php";
+
     class Pedido {
         // Atributo 
         private $id;
         private $data;
-        private $valor;
         private $quantidade;
         private $produto;
+        private $cliente; //Pedido associado com Cliente
+        private $pagamento;
 
         // Método construtor 
-        public function __construct($id, $data, $valor, $quantidade, $produto){
+        public function __construct($id, $data, $quantidade, Produto $produto, Cliente $cliente, Pagamento $pagamento){
         $this->id = $id;
         $this->data = $data;
-        $this->valor = $valor;
         $this->quantidade = $quantidade;
+         $this->cliente = $cliente; 
         $this->produto = $produto;
+        $this->pagamento = $pagamento;
     }
 
 
@@ -35,11 +41,7 @@
         }
 
         public function getValor() {
-            return $this->valor;
-        }
-
-        public function setValor($valor) {
-            $this->valor = $valor;
+            return $this->produto->getPreco() * $this->quantidade;
         }
 
         public function getQuantidade() {
@@ -58,17 +60,35 @@
             $this->produto = $produto;
         }
 
-        public function getValorTotal (){
-            $total = $this->valor * $this->quantidade;
-            return $total;
+         public function getCliente() {
+            return $this->cliente;
+        }
+
+        public function setCliente($cliente) {
+            $this->cliente = $cliente;
+        }
+
+        public function getValorTotal(){
+           return $this->produto->getPreco() * $this->quantidade;
+        }
+
+        public function finalizarPedido(){
+            echo "<h2>Pedido Finalizado!!</h3>";
+            $this->cliente->imprimir();
+            $this->produto->imprimir();
+            echo "Quantidade: " . $this->quantidade;
+            echo "Valor Total: R$ " . $this->getValor();
+            $this->pagamento->realizarPagamento();
         }
 
         public function mostrarPedido(){
             echo "<h2>Pedido #" . $this->id . "</h2>";
-            echo "Cliente: " . $this->cliente->getNome();
-            echo "<h3>Produtos:</h3>";
-            echo $this->produto->getNomeProduto();
+            echo "<h3>Cliente:</h3>" . $this->cliente->getNome();
+            echo "<h3>Conteúdo:</h3>";
+            echo $this->produto->imprimir();
             echo "<h3>Total: R$ " . $this->getValorTotal() . "</h3>";
+            echo "<h3>Pagamento:</h3>";
+            $this->pagamento->realizarPagamento();
         }
 
         public function cancelarPedido () {

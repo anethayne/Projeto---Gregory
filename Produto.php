@@ -1,9 +1,9 @@
 <?php
     class Produto {
         // Atributo 
-        private $nomeProduto;
-        private $preco;
-        private $categoria;
+        protected $nomeProduto;
+        protected $preco;
+        protected $categoria; //Produto em agregação com Categoria
         
         // Método construtor 
         public function __construct ($nomeProduto, $preco, $categoria) {
@@ -35,6 +35,12 @@
 
         public function setCategoria($categoria) {
             $this->categoria = $categoria;
+        }
+
+        public function imprimir(){
+            echo "Produto: " . $this->nomeProduto . "<br>"; 
+            echo "Preço: R$ " . $this->preco . "<br>";
+            $this->categoria->imprimir();
         }
 
     }

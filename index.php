@@ -1,37 +1,14 @@
 <?php
-   require "Pedido.php";
+   require_once "Pedido.php";
 ?>
 
-<h2>Cardápio</h2>
-<table border="1" cellpadding="10">
-   <tr>
-      <th>Produto</th>
-      <th>Categoria</th>
-      <th>Preço</th>
-   </tr>
-   <tr>
-      <td>Cappuccino</td>
-      <td>Cafés</td>
-      <td>R$ 15,00</td>
-   </tr>
-   <tr>
-      <td>Latte</td>
-      <td>Cafés</td>
-      <td>R$ 15,00</td>
-   </tr>
-   <tr>
-      <td>Brownie</td>
-      <td>Doces</td>
-      <td>R$ 15,00</td>
-   </tr>
-</table><br><hr>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Cafeteria - Fazer Pedido</title>
+   <title>Cafeteria - Cadastro do Pedido</title>
 </head>
 <body>
    <h1>Novo Pedido</h1>
@@ -44,25 +21,24 @@
          <label for="cpf">CPF: </label> <br>
          <input type="text" name="cpf">
       </div>
-
-      <h2>Escolha seus Itens</h2>
       <div>
-         <label>Categoria:</label> <br>
-         <select name="categoria">
-         <option value="Cafés">Cafés</option>
-         <option value="Doces">Doces</option>
-         <option value="Bebidas">Bebidas</option>
-         <option value="Salgados">Salgados</option>
-         </select>
-         </div>
          <label for="produto">Produto: </label> <br>
          <input type="text" name="produto">
       </div>
+      <label> Categoria: </label> <br>
+      <label><input type="radio" name="categoria" value="Bebidas">Bebidas</label>
+      <label><input type="radio" name="categoria" value="Doces">Doces</label>
       <div>
          <label for="quantidade">Quantidade: </label> <br>
          <input type="number" name="quantidade">
       </div>
-      <div>
+      <label>Forma de pagamento:</label> <br>
+      <select name="pagamento">
+         <option value="pix">Pix</option>
+         <option value="cartao">Cartão</option>
+         <option value="dinheiro">Dinheiro</option> 
+      </select>
+      <div><br>
          <input type="reset" value="Limpar">  
          <input type="submit" value="Enviar">
       </div>
